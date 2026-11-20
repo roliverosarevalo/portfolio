@@ -102,7 +102,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;color:var(
     <section class="blk" id="sobre-mi"><div class="wrap about">
       <div><h2 style="font-size:clamp(32px,4.4vw,52px);margin-bottom:22px">Sobre mí</h2>
         <p>Soy Rocío, estudio Arquitectura en la Escuela Politécnica Superior de la Universidad CEU San Pablo, en Madrid.</p>
-        <p>Me interesan los espacios que se recorren sin barreras y la arquitectura que dialoga con el paisaje: el agua, la sombra, los árboles.</p></div>
+        </div>
       <ul class="cv" id="cv"></ul>
     </div></section>
   </div>
@@ -141,7 +141,7 @@ function renderRefs(){const el=document.getElementById('refs');const sec=documen
   el.innerHTML=refs.map(r=>`<li><a href="#obra-${esc(r.id)}"><b>${esc(r.title)}</b></a><span>${esc([r.author,r.place].filter(Boolean).join(' · '))}</span><em>${esc(r.year||'')}</em></li>`).join('')}
 function renderObra(id){const w=items.find(x=>x.id===id),el=document.getElementById('obra');if(!w){el.classList.remove('on');document.getElementById('home').hidden=false;return}
   const f=[['Tipo',w.type],[w.type==='Referente'?'Autor/a':'Asignatura',w.type==='Referente'?w.author:w.course],['Lugar',w.place],['Año',w.year],['Estado',w.type==='Referente'?'':w.status]].filter(x=>x[1]);
-  const txt=w.web||w.desc||'';
+  const txt=w.web||'';
   el.innerHTML=`<div class="wrap"><a class="back" href="#obras">← Volver a las obras</a><h1>${esc(w.title)}</h1><div class="ficha">${f.map(([k,v])=>`<div><small>${k}</small>${esc(v)}</div>`).join('')}</div>
   <div class="body"><div><div class="txt">${esc(txt)||'<span style="color:var(--mute)">Texto en preparación.</span>'}</div>${(w.tags||[]).length?`<div class="tags">${w.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>`:''}${w.link?`<p><a href="${esc(w.link)}" target="_blank" rel="noopener">Ver más →</a></p>`:''}</div>
   <div class="gal">${(w.imgs||[]).length?w.imgs.map(i=>`<figure><img src="${esc(imgSrc(i))}" alt="${esc(i.name||w.title)}" loading="lazy"></figure>`).join(''):`<div class="ph">${plan(w.id)}</div>`}</div></div></div>`;
