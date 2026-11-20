@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArquiestudioROA</title>
+<meta name="description" content="ArquiestudioROA · Portfolio de arquitectura de Rocío Oliveros Arévalo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE: portfolio de arquitecta joven, sereno y preciso, que crecerá con los años.
+   IDEA: una lámina de concurso: papel, línea fina de tinta, cajetín y lápiz rojo.
+   PICTURE: la planta del muro en S perforado con sus fuentes-copa, dibujada a línea, ocupando la portada.
+   COLOUR and TYPE: papel #f3f1eb y tinta #151515; rojo de corrección #e5482f solo como acento. Jost ligera + Inter.
+   LAYOUT: portada con nombre y dibujo; índice de obras numerado como un listado de láminas; ficha de obra; sobre mí; contacto. */
+:root{color-scheme:light dark;--bg:light-dark(#f3f1eb,#121212);--ink:light-dark(#151515,#ecebe6);--mute:light-dark(#6c6a63,#9a9893);--line:light-dark(#d9d5ca,#2c2c2c);--card:light-dark(#fbfaf6,#191919);--acc:#e5482f}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{font-family:Jost,Futura,sans-serif;font-weight:300;margin:0;line-height:1.05;text-wrap:balance}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,18px)}
+header.top{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:22px;min-height:62px}
+.brand{font:500 17px Jost,sans-serif;letter-spacing:.02em;text-decoration:none;display:flex;gap:9px;align-items:center}
+.brand i{width:9px;height:9px;background:var(--acc);border-radius:50%;display:inline-block}
+nav.menu{margin-inline-start:auto;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:15px}
+nav.menu a{text-decoration:none;color:var(--mute);padding:8px 0}nav.menu a:hover,nav.menu a.on{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,60px);align-items:end;padding-block:clamp(34px,6vw,80px) clamp(28px,4vw,50px)}
+.hero h1{font-size:clamp(44px,7vw,92px);letter-spacing:-.01em}
+.hero h1 span{display:block;color:var(--mute)}
+.hero p{font-size:18px;max-width:46ch;color:var(--mute);margin:20px 0 0}
+.sheet{position:relative;border:1px solid var(--ink);background:var(--card);aspect-ratio:4/3}
+.sheet svg{position:absolute;inset:0;width:100%;height:100%}
+.cajetin{position:absolute;right:-1px;bottom:-1px;border:1px solid var(--ink);background:var(--card);display:grid;grid-template-columns:auto auto;font-size:11px;line-height:1.3}
+.cajetin div{padding:5px 9px;border-inline-start:1px solid var(--ink)}.cajetin div:first-child{border:0}
+.cajetin b{display:block;font-weight:500;font-size:12px}
+@media(max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}}
+section.blk{padding:clamp(40px,6vw,84px) 0;border-top:1px solid var(--line)}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 24px;margin-bottom:26px}
+.sechead h2{font-size:clamp(32px,4.4vw,52px);margin-inline-end:auto}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{border:1px solid var(--line);background:none;border-radius:99px;padding:8px 15px;min-height:40px;font:inherit;font-size:14px;color:var(--mute);cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:34px 26px}
+.work{text-decoration:none;display:grid;gap:12px}
+.work .img{position:relative;aspect-ratio:4/3;border:1px solid var(--line);background:var(--card);overflow:hidden}
+.work .img img,.work .img svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.work:hover .img img,.work:hover .img svg{transform:scale(1.03)}
+.work .n{font:400 13px Inter;color:var(--acc)}
+.work h3{font-size:26px}
+.work .meta{font-size:14px;color:var(--mute)}
+.empty{padding:50px 0;color:var(--mute);font-size:18px}
+.obra{display:none}.obra.on{display:block}
+.obra .back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;color:var(--mute);padding:20px 0;min-height:44px}
+.obra h1{font-size:clamp(40px,6.5vw,84px);margin:6px 0 22px}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:34px}
+.ficha div{padding:12px 14px 12px 0;font-size:15px}.ficha small{display:block;color:var(--mute);font-size:12px}
+.obra .body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,4vw,60px);align-items:start}
+.obra .txt{font-size:17px;max-width:62ch;white-space:pre-line}
+.obra .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}.obra .tags span{font-size:13px;border:1px solid var(--line);border-radius:99px;padding:3px 11px;color:var(--mute)}
+.gal{display:grid;gap:16px}.gal figure{margin:0}.gal img{width:100%;display:block;border:1px solid var(--line)}
+.gal .ph{aspect-ratio:4/3;position:relative;border:1px solid var(--line);background:var(--card)}.gal .ph svg{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:760px){.obra .body{grid-template-columns:minmax(0,1fr)}}
+.refs{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.refs li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 70px;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.refs b{font:400 21px Jost,sans-serif}.refs span{color:var(--mute);font-size:15px}.refs em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;color:var(--mute)}
+.refs a{text-decoration:none}
+@media(max-width:600px){.refs li{grid-template-columns:minmax(0,1fr) 54px}.refs li span{grid-column:1/-1;order:3}}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px)}
+.about p{font-size:19px;margin:0 0 14px;max-width:52ch}
+.cv{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}.cv li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}.cv li span{color:var(--mute)}
+@media(max-width:760px){.about{grid-template-columns:minmax(0,1fr)}}
+footer{border-top:1px solid var(--ink);padding:40px 0 60px}
+footer .big{font:300 clamp(34px,6vw,72px) Jost,sans-serif;line-height:1.05;text-decoration:none;display:inline-block}
+footer .big:hover{color:var(--acc)}
+footer .row{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;color:var(--mute);font-size:14px}
+.note{font-size:12px;color:var(--mute);margin-top:18px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.work .img img,.work .img svg{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="#inicio"><i></i>ArquiestudioROA</a><nav class="menu"><a href="#obras">Obras</a><a href="#referentes">Referentes</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav></div></header>
+<main id="inicio">
+  <div id="home">
+    <div class="wrap hero">
+      <div><h1>Rocío Oliveros<span>Arévalo</span></h1><p>Estudiante de Arquitectura en la Universidad CEU San Pablo, Madrid. Aquí guardo y enseño mis proyectos, trabajos e ideas.</p></div>
+      <div class="sheet" aria-label="Dibujo en planta: muro curvo en S perforado con fuentes en forma de copa y una cubierta ondulada">
+        <svg viewBox="0 0 800 600" fill="none" stroke="currentColor" stroke-linecap="round" id="heroSvg"></svg>
+        <div class="cajetin"><div><b>ArquiestudioROA</b>Planta general</div><div><b>E 1:200</b>Lámina 01</div></div>
+      </div>
+    </div>
+    <section class="blk" id="obras"><div class="wrap">
+      <div class="sechead"><h2>Obras</h2><div class="filters" id="filters"></div></div>
+      <div class="works" id="works"></div>
+    </div></section>
+    <section class="blk" id="referentes"><div class="wrap">
+      <div class="sechead"><h2>Referentes</h2><p style="color:var(--mute);margin:0">Arquitectura que me enseña.</p></div>
+      <ul class="refs" id="refs"></ul>
+    </div></section>
+    <section class="blk" id="sobre-mi"><div class="wrap about">
+      <div><h2 style="font-size:clamp(32px,4.4vw,52px);margin-bottom:22px">Sobre mí</h2>
+        <p>Soy Rocío, estudio Arquitectura en la Escuela Politécnica Superior de la Universidad CEU San Pablo, en Madrid.</p>
+        <p>Me interesan los espacios que se recorren sin barreras y la arquitectura que dialoga con el paisaje: el agua, la sombra, los árboles.</p></div>
+      <ul class="cv" id="cv"></ul>
+    </div></section>
+  </div>
+  <article class="obra" id="obra"></article>
+</main>
+<footer id="contacto"><div class="wrap">
+  <p style="color:var(--mute);margin:0 0 6px">Contacto</p>
+  <a class="big" id="mail" href="#contacto">Escríbeme</a>
+  <div class="row" id="links"></div>
+  <p class="note">© <span id="yr"></span> Rocío Oliveros Arévalo · ArquiestudioROA</p>
+</div></footer>
+
+<script>
+{
+function start(D){
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const items=(D.items||[]).slice().sort((a,b)=>String(b.year||b.date||'').localeCompare(String(a.year||a.date||'')));
+const works=items.filter(i=>i.type!=='Referente'),refs=items.filter(i=>i.type==='Referente');
+const PL={Proyecto:'Proyectos',Trabajo:'Trabajos',Idea:'Ideas',Concurso:'Concursos',Otro:'Otros'};
+let filter='todo';
+const imgSrc=i=>i.src||i.url;
+/* dibujo a línea generado: una planta abstracta distinta para cada obra */
+function plan(seed){let h=0;for(const c of seed)h=(h*31+c.charCodeAt(0))>>>0;const r=()=>(h=(h*1664525+1013904223)>>>0)/4294967296;
+  let g='';for(let x=40;x<800;x+=40)g+=`<line x1="${x}" y1="0" x2="${x}" y2="600" stroke-opacity=".07"/>`;for(let y=40;y<600;y+=40)g+=`<line x1="0" y1="${y}" x2="800" y2="${y}" stroke-opacity=".07"/>`;
+  let s='';const n=3+Math.floor(r()*3);for(let i=0;i<n;i++){const w=120+r()*260,hh=80+r()*200,x=60+r()*(680-w),y=60+r()*(480-hh);s+=`<rect x="${x|0}" y="${y|0}" width="${w|0}" height="${hh|0}" stroke-width="${i?1.2:2.4}"/>`}
+  const cx=200+r()*400,cy=150+r()*300,rr=40+r()*70;s+=`<circle cx="${cx|0}" cy="${cy|0}" r="${rr|0}" stroke="#e5482f" stroke-width="1.6"/>`;
+  return `<svg viewBox="0 0 800 600" fill="none" stroke="currentColor" preserveAspectRatio="xMidYMid slice">${g}${s}</svg>`}
+function renderWorks(){
+  const types=['todo',...new Set(works.map(w=>w.type))];
+  document.getElementById('filters').innerHTML=types.length>2?types.map(t=>`<button class="${filter===t?'on':''}" data-f="${esc(t)}">${t==='todo'?'Todo':esc(PL[t]||t)}</button>`).join(''):'';
+  const list=works.filter(w=>filter==='todo'||w.type===filter);
+  document.getElementById('works').innerHTML=list.map((w,i)=>`<a class="work" href="#obra-${esc(w.id)}"><div class="img">${(w.imgs||[])[0]?`<img src="${esc(imgSrc(w.imgs[0]))}" alt="${esc(w.title)}" loading="lazy">`:plan(w.id)}</div><div><div class="n">${String(works.indexOf(w)+1).padStart(2,'0')} · ${esc(w.type)}</div><h3>${esc(w.title)}</h3><div class="meta">${[w.course,w.place,w.year].filter(Boolean).map(esc).join(' · ')}</div></div></a>`).join('')||'<p class="empty">Pronto habrá obras aquí.</p>';
+}
+function renderRefs(){const el=document.getElementById('refs');const sec=document.getElementById('referentes');
+  if(!refs.length){sec.hidden=true;return}
+  el.innerHTML=refs.map(r=>`<li><a href="#obra-${esc(r.id)}"><b>${esc(r.title)}</b></a><span>${esc([r.author,r.place].filter(Boolean).join(' · '))}</span><em>${esc(r.year||'')}</em></li>`).join('')}
+function renderObra(id){const w=items.find(x=>x.id===id),el=document.getElementById('obra');if(!w){el.classList.remove('on');document.getElementById('home').hidden=false;return}
+  const f=[['Tipo',w.type],[w.type==='Referente'?'Autor/a':'Asignatura',w.type==='Referente'?w.author:w.course],['Lugar',w.place],['Año',w.year],['Estado',w.type==='Referente'?'':w.status]].filter(x=>x[1]);
+  const txt=w.web||w.desc||'';
+  el.innerHTML=`<div class="wrap"><a class="back" href="#obras">← Volver a las obras</a><h1>${esc(w.title)}</h1><div class="ficha">${f.map(([k,v])=>`<div><small>${k}</small>${esc(v)}</div>`).join('')}</div>
+  <div class="body"><div><div class="txt">${esc(txt)||'<span style="color:var(--mute)">Texto en preparación.</span>'}</div>${(w.tags||[]).length?`<div class="tags">${w.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>`:''}${w.link?`<p><a href="${esc(w.link)}" target="_blank" rel="noopener">Ver más →</a></p>`:''}</div>
+  <div class="gal">${(w.imgs||[]).length?w.imgs.map(i=>`<figure><img src="${esc(imgSrc(i))}" alt="${esc(i.name||w.title)}" loading="lazy"></figure>`).join(''):`<div class="ph">${plan(w.id)}</div>`}</div></div></div>`;
+  el.classList.add('on');document.getElementById('home').hidden=true;scrollTo(0,0)}
+function route(){const h=location.hash.slice(1);if(h.startsWith('obra-'))renderObra(h.slice(5));else{document.getElementById('obra').classList.remove('on');document.getElementById('home').hidden=false}}
+document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;filter=b.dataset.f;renderWorks()});
+addEventListener('hashchange',route);
+/* portada: planta del muro en S con fuentes-copa */
+(function(){const s=document.getElementById('heroSvg');let g='';
+  for(let x=40;x<800;x+=40)g+=`<line x1="${x}" y1="0" x2="${x}" y2="600" stroke-opacity=".07"/>`;for(let y=40;y<600;y+=40)g+=`<line x1="0" y1="${y}" x2="800" y2="${y}" stroke-opacity=".07"/>`;
+  const tree=(x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}" stroke-opacity=".35" stroke-dasharray="3 5"/><circle cx="${x}" cy="${y}" r="3" fill="currentColor" stroke="none" fill-opacity=".4"/>`;
+  [[90,90,38],[700,80,46],[740,500,40],[60,520,34],[640,300,28]].forEach(t=>g+=tree(...t));
+  const S='M150 470 C 150 300, 400 330, 400 300 S 650 300, 650 130';
+  g+=`<path d="${S}" stroke-width="16" stroke-opacity=".9"/><path d="${S}" stroke-width="10" stroke="var(--card)" stroke-dasharray="6 10"/>`;
+  g+=`<path d="M210 520 C 300 470, 340 560, 430 500 S 560 470, 600 520" stroke-width="1.4"/><path d="M210 545 C 300 495, 340 585, 430 525 S 560 495, 600 545" stroke-width="1.4" stroke-opacity=".6"/>`;
+  [[250,250,26],[320,420,18],[470,240,30],[540,390,20],[600,210,16],[210,360,22]].forEach(([x,y,r],i)=>{g+=`<circle cx="${x}" cy="${y}" r="${r}" stroke="#e5482f" stroke-width="1.6"/><circle cx="${x}" cy="${y}" r="${r*.35}" stroke="#e5482f" stroke-width="1"/>`});
+  g+=`<g stroke-width="1"><line x1="660" y1="560" x2="760" y2="560"/><line x1="660" y1="554" x2="660" y2="566"/><line x1="710" y1="556" x2="710" y2="564"/><line x1="760" y1="554" x2="760" y2="566"/></g><path d="M740 40 l0 40 M740 40 l-7 14 M740 40 l7 14" stroke-width="1.2"/><text x="736" y="98" font-size="13" fill="currentColor" stroke="none" font-family="Jost">N</text>`;
+  s.innerHTML=g})();
+document.getElementById('cv').innerHTML=(D.cv||[]).map(([a,b])=>`<li><span>${esc(a)}</span>${esc(b)}</li>`).join('');
+const st=D.site||{};const mail=document.getElementById('mail');if(st.email){mail.href='mailto:'+st.email;mail.textContent=st.email}
+document.getElementById('links').innerHTML=[st.instagram&&`<a href="${esc(st.instagram)}" target="_blank" rel="noopener">Instagram</a>`,st.linkedin&&`<a href="${esc(st.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`].filter(Boolean).join('');
+document.getElementById('yr').textContent=new Date().getFullYear();
+renderWorks();renderRefs();route();
+}
+fetch('data.json',{cache:'no-cache'}).then(r=>r.json()).then(start).catch(()=>start({site:{},cv:[],items:[]}));
+}
+</script>
+</body>
+</html>

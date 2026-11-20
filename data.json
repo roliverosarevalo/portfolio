@@ -1,0 +1,32 @@
+{
+ "site": {
+  "email": "",
+  "instagram": "",
+  "linkedin": ""
+ },
+ "cv": [
+  [
+   "2025–",
+   "Grado en Arquitectura · Universidad CEU San Pablo, Madrid"
+  ]
+ ],
+ "items": [
+  {
+   "id": "dehesa",
+   "title": "Pabellón de agua en la dehesa",
+   "type": "Proyecto",
+   "status": "En curso",
+   "year": "2026",
+   "place": "Dehesa con pinos",
+   "course": "Proyectos Arquitectónicos I · 2º",
+   "tags": [
+    "paisaje",
+    "agua",
+    "accesibilidad universal",
+    "sombra"
+   ],
+   "web": "Un muro curvo en forma de S, alto y perforado con huecos idénticos en filas e hileras, ordena un claro de la dehesa entre los pinos. A su alrededor, fuentes con forma de copa de cristal aparecen a distintas alturas: las bajas tocan el suelo y se alcanzan desde cualquier posición; las altas flotan y dejan caer el agua por su mástil perforado.\n\nUna cubierta ondulada de 100 m² acompaña la mitad del recorrido y cobija aseos, vestuarios y un pequeño puesto de bebidas. Todo el conjunto se recorre por los mismos accesos, sin distinción por movilidad: un único camino para todas las personas.",
+   "imgs": []
+  }
+ ]
+}
